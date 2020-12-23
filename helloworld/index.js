@@ -19,4 +19,6 @@ app.use(async (ctx) => {
   ctx.body = 'Hello World';
 });
 
-app.listen(3000);
+app.listen(3000, '127.0.0.1', () => {
+  console.log(`The server is running at http://127.0.0.1:3000`)
+});

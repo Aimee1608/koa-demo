@@ -44,6 +44,20 @@ class GoodsController {
     if (result) handleSuccess({ ctx, msg: '列表数据获取成功', data: result })
     else handleError({ ctx, msg: '获取列表数据失败' })
   }
+  static async info(ctx) {
+    let { id } = ctx.query
+    let result = await Goods.findOne({ _id: id }).exec().catch(err => {
+			throw new CustomError(500, '服务器内部错误')
+			return false
+    })
+    if (result) {
+      handleSuccess({ ctx, msg: '获取信息成功！',
+        data: result
+      })
+		} else {
+			handleError({ ctx, msg: '获取信息失败！' })
+		}
+  }
   // 新增
   static async add(ctx) {
     //es6对象解构赋值

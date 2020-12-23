@@ -24,22 +24,10 @@ app.use(koaBody({
 app.use(json());
 app.use(logger());
 
-
-app.use(async (ctx, next) => {
-  console.log('1.这是一个中间件01');
-  await next();
-  console.log('5.匹配完路由以后又会返回来执行中间件')
-});
-app.use(async (ctx, next) => {
-  console.log('2.这是一个中间件02');
-  await next();
-  console.log('4.匹配完路由以后又会返回来执行中间件')
-}); 
-
 // routers
 app.use(routers.routes()).use(routers.allowedMethods());
 
 
-app.listen(8123, '127.0.0.1', () => {
-  console.log(`The server is running at http://127.0.0.1:8123`)
+app.listen(8223, '127.0.0.1', () => {
+  console.log(`The server is running at http://127.0.0.1:8223`)
 });
